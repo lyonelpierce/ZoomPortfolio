@@ -8,6 +8,10 @@ interface Controls {
   isChatOpen: boolean;
   onChatOpen: () => void;
   onChatClose: () => void;
+
+  isPortfolioOpen: boolean;
+  onPortfolioOpen: () => void;
+  onPortfolioClose: () => void;
 }
 
 export const useControls = create<Controls>((set) => ({
@@ -18,4 +22,8 @@ export const useControls = create<Controls>((set) => ({
   isChatOpen: false,
   onChatOpen: () => set({ isChatOpen: true }),
   onChatClose: () => set({ isChatOpen: false }),
+
+  isPortfolioOpen: false,
+  onPortfolioOpen: () => set({ isPortfolioOpen: true }),
+  onPortfolioClose: () => set({ isPortfolioOpen: false }),
 }));

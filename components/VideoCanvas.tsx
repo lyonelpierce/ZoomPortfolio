@@ -3,21 +3,29 @@
 import { CameraControls, Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Lyonel from "./Lyonel";
-import { useRef } from "react";
 import {
   EffectComposer,
   DepthOfField,
-  Bloom,
   Noise,
   Vignette,
 } from "@react-three/postprocessing";
-
-import { Leva, button, useControls } from "leva";
+import { useControls } from "@/hooks/use-controls";
+import { cn } from "@/lib/utils";
 
 const VideoCanvas = () => {
+  const controls = useControls();
+
   return (
-    <div className="flex items-center h-full">
-      <div className="h-[80vh] w-full">
+    <div className="flex items-center h-full relative">
+      {/* <div className="h-[80vh] w-full absolute"> */}
+      <div
+        className={cn(
+          "h-[80vh] w-full absolute",
+          controls.isPortfolioOpen
+            ? "h-1/6 w-80 bottom-0 right-0 mb-24 mr-8 aspect-video"
+            : "h-[80vh] w-full"
+        )}
+      >
         <Canvas
           camera={{
             position: [
@@ -27,8 +35,7 @@ const VideoCanvas = () => {
           }}
         >
           <Lyonel />
-          {/* <CameraManager /> */}
-          <EffectComposer multisampling={10} enableNormalPass={false}>
+          <EffectComposer multisampling={10} enableNormalPass={true}>
             <DepthOfField
               focusDistance={0}
               focalLength={0.02}
@@ -48,7 +55,5 @@ const VideoCanvas = () => {
 export default VideoCanvas;
 
 const CameraManager = () => {
-  const controls = useRef(null);
-
-  return <CameraControls ref={controls} />;
+  return <CameraControls />;
 };

@@ -73,7 +73,14 @@ const OptionsMenu = () => {
             </p>
           </Link>
         </li>
-        <li className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-28 p-2 group/icon">
+        <li
+          className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-28 p-2 group/icon"
+          onClick={
+            controls.isPortfolioOpen
+              ? controls.onPortfolioClose
+              : controls.onPortfolioOpen
+          }
+        >
           <BookImage className="text-[#25e55f] h-6 w-6 transition-all ease-in-out group-hover/icon:brightness-150" />
           <p className="text-sm text-[#25e55f] font-semibold transition-all ease-in-out group-hover/icon:brightness-150 select-none">
             Portfolio
