@@ -23,18 +23,16 @@ const ContactCard = () => {
   if (!isMounted) return null;
 
   return (
-    <Popover
-      open={contactTrigger.isOpen}
-      onOpenChange={contactTrigger.onClose}
-      modal={false}
-    >
-      <Button
-        className="bg-[#292929] hover:bg-[#292929] opacity-0 transition-colors ease-in-out group-hover:opacity-100 absolute top-0 left-0 m-4"
-        size="icon"
-        onClick={contactTrigger.onOpen}
-      >
-        <ContactRound className=" text-[#25e55f]" />
-      </Button>
+    <Popover open={contactTrigger.isOpen} onOpenChange={contactTrigger.onClose}>
+      <PopoverAnchor className="absolute left-0">
+        <Button
+          className="bg-[#292929] hover:bg-[#292929] opacity-0 transition-colors ease-in-out group-hover:opacity-100 absolute top-0 left-0 m-4"
+          size="icon"
+          onClick={contactTrigger.onOpen}
+        >
+          <ContactRound className=" text-[#25e55f]" />
+        </Button>
+      </PopoverAnchor>
       <PopoverContent
         className="bg-[#26272a] border-0 ml-4 shadow-none text-[#f5f5f5] w-96 flex flex-col gap-2 my-16"
         sideOffset={10}
