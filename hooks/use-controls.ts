@@ -1,13 +1,21 @@
 import { create } from "zustand";
 
 interface Controls {
-  isOpen: boolean;
-  onOpen: () => void;
-  onClose: () => void;
+  isParticipantsOpen: boolean;
+  onParticipantsOpen: () => void;
+  onParticipantsClose: () => void;
+
+  isChatOpen: boolean;
+  onChatOpen: () => void;
+  onChatClose: () => void;
 }
 
 export const useControls = create<Controls>((set) => ({
-  isOpen: false,
-  onOpen: () => set({ isOpen: true }),
-  onClose: () => set({ isOpen: false }),
+  isParticipantsOpen: false,
+  onParticipantsOpen: () => set({ isParticipantsOpen: true }),
+  onParticipantsClose: () => set({ isParticipantsOpen: false }),
+
+  isChatOpen: false,
+  onChatOpen: () => set({ isChatOpen: true }),
+  onChatClose: () => set({ isChatOpen: false }),
 }));

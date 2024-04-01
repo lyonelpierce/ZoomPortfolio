@@ -4,6 +4,14 @@ import { CameraControls, Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Lyonel from "./Lyonel";
 import { useRef } from "react";
+import {
+  EffectComposer,
+  DepthOfField,
+  Bloom,
+  Noise,
+  Vignette,
+} from "@react-three/postprocessing";
+
 import { Leva, button, useControls } from "leva";
 
 const VideoCanvas = () => {
@@ -20,6 +28,16 @@ const VideoCanvas = () => {
         >
           <Lyonel />
           {/* <CameraManager /> */}
+          <EffectComposer multisampling={10} enableNormalPass={false}>
+            <DepthOfField
+              focusDistance={0}
+              focalLength={0.02}
+              bokehScale={2}
+              height={1280}
+            />
+            <Noise opacity={0.02} />
+            <Vignette eskil={false} offset={0.01} darkness={0.3} />
+          </EffectComposer>
           <Environment preset="apartment" background />
         </Canvas>
       </div>

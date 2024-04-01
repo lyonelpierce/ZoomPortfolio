@@ -39,6 +39,11 @@ const ContactCard = () => {
         side="bottom"
       >
         <h1 className="font-semibold">Lyonel Pierce's Portfolio Meeting</h1>
+        <p className="text-sm">
+          Hi! I’m Lyonel Pierce, I&apos;m a Full Stack Developer and Web
+          Designer, who has passion for building creative and functional web
+          applications with intuitive functionality.
+        </p>
         <ul className="flex flex-col gap-1">
           <li className="grid grid-cols-2">
             <p className="text-[#999999] text-sm">Host:</p>
