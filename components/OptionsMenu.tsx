@@ -15,10 +15,17 @@ import {
 } from "lucide-react";
 import { useContactTrigger } from "@/hooks/use-contact";
 import { useControls } from "@/hooks/use-controls";
+import { useAIModel } from "@/hooks/use-model";
 
 const OptionsMenu = () => {
   const contactTrigger = useContactTrigger();
   const controls = useControls();
+
+  const askAI = useAIModel((state) => state.askAI);
+
+  const ask = (question: string) => {
+    askAI(question);
+  };
 
   return (
     <div className="opacity-0 transition-all ease-in-out group-hover:opacity-100 absolute bottom-0 flex justify-between items-center h-20 px-1 w-full">
@@ -86,13 +93,19 @@ const OptionsMenu = () => {
             Portfolio
           </p>
         </li>
-        <li className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-28 p-2 group/icon">
+        <li
+          className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-28 p-2 group/icon"
+          onClick={() => ask("Tell me about your skills?")}
+        >
           <SlidersHorizontal className="text-[#a8a8a8] h-6 w-6 transition-all ease-in-out group-hover/icon:text-[#d9d9d9]" />
           <p className="text-sm text-[#a8a8a8] font-semibold transition-all ease-in-out group-hover/icon:text-[#d9d9d9] select-none">
             Skills
           </p>
         </li>
-        <li className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-28 p-2 group/icon">
+        <li
+          className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-28 p-2 group/icon"
+          onClick={() => ask("Tell me about your job experiences?")}
+        >
           <BriefcaseBusiness className="text-[#a8a8a8] h-6 w-6 transition-all ease-in-out group-hover/icon:text-[#d9d9d9]" />
           <p className="text-sm text-[#a8a8a8] font-semibold transition-all ease-in-out group-hover/icon:text-[#d9d9d9] select-none">
             Experience

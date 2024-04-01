@@ -19,9 +19,6 @@ export async function GET(req: NextRequest) {
       },
     ],
     model: "gpt-3.5-turbo",
-    response_format: {
-      type: "json_object",
-    },
   });
 
   console.log(chatCompletition.choices[0].message.content);

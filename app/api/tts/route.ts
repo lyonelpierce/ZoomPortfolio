@@ -9,10 +9,7 @@ export async function GET(req: NextRequest) {
     process.env.SPEECH_REGION!
   );
 
-  console.log(req.nextUrl.searchParams.get("lyonel") || "Lyonel");
-
-  const lyonel = req.nextUrl.searchParams.get("lyonel") || "Lyonel";
-  speechConfig.speechSynthesisVoiceName = `en-US-DavisNeural`;
+  speechConfig.speechSynthesisVoiceName = `en-US-AndrewNeural`;
 
   const speechSynthesizer = new sdk.SpeechSynthesizer(speechConfig);
   const visemes: any = [];
@@ -26,8 +23,6 @@ export async function GET(req: NextRequest) {
         "I'm excited to try text to speech",
       (result) => {
         const { audioData } = result;
-
-        console.log(audioData);
 
         speechSynthesizer.close();
 
