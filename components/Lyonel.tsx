@@ -9,9 +9,9 @@ const ANIMATION_FADE_TIME = 0.5;
 
 const Lyonel = ({ ...props }) => {
   const group = useRef(null);
-  const { scene } = useGLTF("/models/hrestest.glb");
+  const { scene } = useGLTF("/models/lyonel.glb");
 
-  const { animations } = useGLTF("/models/animations.glb");
+  const { animations } = useGLTF("/models/hrestest.glb");
   const { actions, mixer } = useAnimations(animations, group);
   const [animation, setAnimation] = useState("Idle");
 
@@ -58,7 +58,11 @@ const Lyonel = ({ ...props }) => {
   };
 
   useEffect(() => {
-    if (currentMessage) {
+    if (
+      currentMessage &&
+      currentMessage.audioPlayer &&
+      currentMessage.audioPlayer.currentTime > 0
+    ) {
       setAnimation(randInt(0, 1) ? "Meeting" : "Talking");
     } else {
       setAnimation("Idle");

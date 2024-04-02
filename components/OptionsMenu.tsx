@@ -95,7 +95,7 @@ const OptionsMenu = () => {
         </li>
         <li
           className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-28 p-2 group/icon"
-          onClick={() => ask("Tell me about your skills?")}
+          onClick={() => ask("Tell me about your skills")}
         >
           <SlidersHorizontal className="text-[#a8a8a8] h-6 w-6 transition-all ease-in-out group-hover/icon:text-[#d9d9d9]" />
           <p className="text-sm text-[#a8a8a8] font-semibold transition-all ease-in-out group-hover/icon:text-[#d9d9d9] select-none">
@@ -104,7 +104,7 @@ const OptionsMenu = () => {
         </li>
         <li
           className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-28 p-2 group/icon"
-          onClick={() => ask("Tell me about your job experiences?")}
+          onClick={() => ask("Tell me about your job experiences")}
         >
           <BriefcaseBusiness className="text-[#a8a8a8] h-6 w-6 transition-all ease-in-out group-hover/icon:text-[#d9d9d9]" />
           <p className="text-sm text-[#a8a8a8] font-semibold transition-all ease-in-out group-hover/icon:text-[#d9d9d9] select-none">
