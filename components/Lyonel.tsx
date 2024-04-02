@@ -9,9 +9,9 @@ const ANIMATION_FADE_TIME = 0.5;
 
 const Lyonel = ({ ...props }) => {
   const group = useRef(null);
-  const { scene } = useGLTF("/models/lyonel.glb");
+  const { scene } = useGLTF("/models/hrestest.glb");
 
-  const { animations } = useGLTF("/models/hrestest.glb");
+  const { animations } = useGLTF("/models/animations.glb");
   const { actions, mixer } = useAnimations(animations, group);
   const [animation, setAnimation] = useState("Idle");
 

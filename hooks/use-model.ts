@@ -15,11 +15,21 @@ export const useAIModel = create<AIModel>((set, get: any) => ({
     if (!question) {
       return;
     }
+
+    const alreadyAsked = get().messages.some(
+      (msg: any) => msg.question === question
+    );
+    if (alreadyAsked) {
+      return;
+    }
+
     const message: any = {
       question,
       id: get().messages.length,
     };
-    set(() => ({
+
+    set((state: any) => ({
+      messages: [...state.messages, message],
       loading: true,
     }));
 
@@ -38,9 +48,12 @@ export const useAIModel = create<AIModel>((set, get: any) => ({
     }));
 
     set((state: any) => ({
-      messages: [...state.messages, message],
+      messages: state.messages.map((msg: any) =>
+        msg.id === message.id ? { ...msg, answer: message.answer } : msg
+      ),
       loading: false,
     }));
+
     get().playMessage(message);
   },
   playMessage: async (message: any) => {
