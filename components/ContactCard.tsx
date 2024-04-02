@@ -6,7 +6,6 @@ import {
   Popover,
   PopoverAnchor,
   PopoverContent,
-  PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { ContactRound } from "lucide-react";
@@ -24,13 +23,13 @@ const ContactCard = () => {
 
   return (
     <Popover open={contactTrigger.isOpen} onOpenChange={contactTrigger.onClose}>
-      <PopoverAnchor className="absolute left-0">
+      <PopoverAnchor className="absolute left-0 z-10">
         <Button
           className="bg-[#292929] hover:bg-[#292929] opacity-0 transition-colors ease-in-out group-hover:opacity-100 absolute top-0 left-0 m-4"
           size="icon"
           onClick={contactTrigger.onOpen}
         >
-          <ContactRound className=" text-[#25e55f]" />
+          <ContactRound className="text-[#25e55f]" />
         </Button>
       </PopoverAnchor>
       <PopoverContent

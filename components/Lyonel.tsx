@@ -22,7 +22,8 @@ const Lyonel = ({ ...props }) => {
   const [blink, setBlink] = useState(false);
 
   useEffect(() => {
-    let blinkTimeout: any;
+    let blinkTimeout: NodeJS.Timeout;
+
     const nextBlink = () => {
       blinkTimeout = setTimeout(() => {
         setBlink(true);
@@ -32,9 +33,11 @@ const Lyonel = ({ ...props }) => {
         }, 100);
       }, randInt(1000, 5000));
     };
+
     nextBlink();
+
     return () => clearTimeout(blinkTimeout);
-  });
+  }, []);
 
   const lerpMorphTarget = (target: any, value: any, speed = 0.1) => {
     scene.traverse((child: any) => {
