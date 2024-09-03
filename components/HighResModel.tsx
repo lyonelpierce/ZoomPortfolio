@@ -79,7 +79,7 @@ type ContextType = Record<
 >;
 
 export function Model(props: JSX.IntrinsicElements["group"]) {
-  const group = useRef<THREE.Group>();
+  const group = useRef<THREE.Group | null>(null);
   const { nodes, materials, animations } = useGLTF(
     "/hrestest.glb"
   ) as GLTFResult;
