@@ -38,7 +38,6 @@ export const useAIModel = create<AIModel>((set, get: any) => ({
     // Ask AI
     const res = await fetch(`/api/ai?question=${question}`);
     const data = await res.json();
-    console.log(data);
 
     message.answer = data;
     message.speech = speech;

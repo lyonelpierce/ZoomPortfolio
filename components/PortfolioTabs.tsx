@@ -4,6 +4,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const portfolioItems = [
   {
+    name: "Lore Machine",
+    value: "loremachine",
+    description: "Lore Machine",
+    url: "https://loremachine.world/",
+    favicon: "/images/loremachine.ico",
+  },
+  {
     name: "Eliza Pierce",
     value: "elizapierce",
     description: "3D E-commerce Jewelry",
@@ -14,7 +21,7 @@ const portfolioItems = [
     name: "Inkspire",
     value: "inkspire",
     description: "AI Tattoo Generator",
-    url: "https://inkspireai.com/",
+    url: "https://inkspire-indol.vercel.app/",
     favicon: "/images/inkspire.ico",
   },
   {

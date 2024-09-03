@@ -19,7 +19,7 @@ export const useControls = create<Controls>((set) => ({
   onParticipantsOpen: () => set({ isParticipantsOpen: true }),
   onParticipantsClose: () => set({ isParticipantsOpen: false }),
 
-  isChatOpen: false,
+  isChatOpen: true,
   onChatOpen: () => set({ isChatOpen: true }),
   onChatClose: () => set({ isChatOpen: false }),
 
