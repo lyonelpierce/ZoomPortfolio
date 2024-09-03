@@ -37,7 +37,9 @@ const ContactCard = () => {
         sideOffset={10}
         side="bottom"
       >
-        <h1 className="font-semibold">Lyonel Pierce's Portfolio Meeting</h1>
+        <h1 className="font-semibold">
+          Lyonel Pierce&apos;s Portfolio Meeting
+        </h1>
         <p className="text-sm">
           Hi! I&apos;m Lyonel Pierce, I&apos;m a Full Stack Developer and Web
           Designer, who has passion for building creative and functional web
