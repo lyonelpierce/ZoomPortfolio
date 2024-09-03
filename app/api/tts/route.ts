@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { PassThrough } from "stream";
 
+export const revalidate = 0;
+
 export async function GET(req: NextRequest) {
   const speechConfig = sdk.SpeechConfig.fromSubscription(
     process.env.SPEECH_KEY!,
@@ -22,6 +24,7 @@ export async function GET(req: NextRequest) {
         req.nextUrl.searchParams.get("text") ||
           "I'm excited to try text to speech",
         (result) => {
+          console.log(result)
           if (result.audioData) {
             // convert arrayBuffer to stream
             const bufferStream = new PassThrough();
