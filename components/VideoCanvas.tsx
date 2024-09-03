@@ -30,7 +30,7 @@ const VideoCanvas = () => {
             : "h-[80vh] w-full"
         )}
       >
-        {/* <Canvas
+        <Canvas
           camera={{
             position: [
               -0.671807189834583, 0.3149880954995405, 1.5225959406311749,
@@ -50,7 +50,7 @@ const VideoCanvas = () => {
             <Vignette eskil={false} offset={0.01} darkness={0.3} />
           </EffectComposer>
           <Environment preset="apartment" background blur={0.1} />
-        </Canvas> */}
+        </Canvas>
       </div>
       {controls.isPortfolioOpen && (
         <div className="h-[80vh] w-full relative">
