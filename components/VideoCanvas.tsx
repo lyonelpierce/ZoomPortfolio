@@ -37,6 +37,7 @@ const VideoCanvas = () => {
             ],
             fov: 65,
           }}
+          className={cn("w-full", controls.isPortfolioOpen && 'max-w-80')}
         >
           <Lyonel />
           <EffectComposer multisampling={10} enableNormalPass={true}>
