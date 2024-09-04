@@ -18,6 +18,7 @@ import { useContactTrigger } from "@/hooks/use-contact";
 import { useControls } from "@/hooks/use-controls";
 import { useAIModel } from "@/hooks/use-model";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
+import { Separator } from "./ui/separator";
 
 const OptionsMenu = () => {
   const contactTrigger = useContactTrigger();
@@ -190,8 +191,8 @@ const OptionsMenu = () => {
             Chat
           </p>
         </li>
-
-      {/* Middle Menu */}
+        <Separator orientation="vertical" className="w-0.5 h-12 bg-white/30" />
+        {/* Middle Menu */}
         <li
           className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-20 p-2 group/icon"
           onClick={contactTrigger.onOpen}
@@ -244,8 +245,8 @@ const OptionsMenu = () => {
             Experience
           </p>
         </li>
-
-      {/* End Menu */}
+        <Separator orientation="vertical" className="w-0.5 h-12 bg-white/30" />
+        {/* End Menu */}
         <li
           className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-20 p-2 group/icon"
           onClick={contactTrigger.onOpen}
