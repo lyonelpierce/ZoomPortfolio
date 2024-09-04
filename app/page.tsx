@@ -49,7 +49,7 @@ export default function Home() {
       {(controls.isParticipantsOpen || controls.isChatOpen) && (
         <>
           <ResizableHandle className="bg-[#383838]" />
-          <ResizablePanel defaultSize={20} className="bg-[#242424]">
+          <ResizablePanel defaultSize={20} maxSize={30} minSize={20} className="bg-[#242424]">
             <ResizablePanelGroup direction="vertical">
               {controls.isParticipantsOpen && (
                 <>
