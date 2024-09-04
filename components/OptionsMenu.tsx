@@ -21,14 +21,16 @@ import { Separator } from "./ui/separator";
 import { useEffect, useState } from "react";
 import useWindowDimensions from "@/hooks/use-window";
 import MobileDrawer from "./MobileDrawer";
+import { toast } from "sonner";
 
 const OptionsMenu = () => {
-  const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
   const [option, setOption] = useState<string>("");
+  const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
 
-  const contactTrigger = useContactTrigger();
   const controls = useControls();
+  const contactTrigger = useContactTrigger();
 
+  const { isPlaying } = useAIModel();
   const { width } = useWindowDimensions();
 
   useEffect(() => {
@@ -44,6 +46,11 @@ const OptionsMenu = () => {
   };
 
   const handleTriggers = (question: string) => {
+    if (isPlaying) {
+      toast.info("Please wait until the current action is finished.");
+      return;
+    }
+
     if (controls.isChatOpen) {
       ask(question);
     } else {
@@ -53,8 +60,19 @@ const OptionsMenu = () => {
   };
 
   const handleOpenMobileMenu = (option: string) => {
-    setOpenMobileMenu(true);
     setOption(option);
+    setOpenMobileMenu(true);
+  };
+
+  const handleTriggersMobile = (question: string) => {
+    if (isPlaying) {
+      toast.info("Please wait until the current action is finished.");
+      return;
+    }
+
+    setOption("chat");
+    setOpenMobileMenu(true);
+    ask(question);
   };
 
   return (
@@ -244,7 +262,7 @@ const OptionsMenu = () => {
             </li>
             <li
               className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-20 p-2 group/icon"
-              onClick={() => handleTriggers("Tell me about your skills")}
+              onClick={() => handleTriggersMobile("Tell me about your skills")}
             >
               <SlidersHorizontal className="text-[#a8a8a8] size-5 transition-all ease-in-out group-hover/icon:text-[#d9d9d9]" />
               <p className="text-xs md:text-sm text-[#a8a8a8] font-semibold transition-all ease-in-out group-hover/icon:text-[#d9d9d9] select-none">
@@ -254,7 +272,7 @@ const OptionsMenu = () => {
             <li
               className="flex flex-col gap-1 items-center justify-center cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-20 p-2 group/icon"
               onClick={() =>
-                handleTriggers("Tell me about your job experiences")
+                handleTriggersMobile("Tell me about your job experiences")
               }
             >
               <BriefcaseBusiness className="text-[#a8a8a8] size-5 transition-all ease-in-out group-hover/icon:text-[#d9d9d9]" />

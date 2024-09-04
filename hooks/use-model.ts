@@ -4,13 +4,18 @@ interface AIModel {
   messages: string[];
   currentMessage: any;
   loading: boolean;
+  isPlaying: boolean; // Add isPlaying state
   askAI: (question: string) => void;
+  playMessage: (message: any) => void;
+  stopMessage: (message: any) => void;
 }
 
 export const useAIModel = create<AIModel>((set, get: any) => ({
   messages: [],
   currentMessage: null,
   loading: false,
+  isPlaying: false, // Initialize isPlaying state
+
   askAI: async (question: string) => {
     if (!question) {
       return;
@@ -33,14 +38,11 @@ export const useAIModel = create<AIModel>((set, get: any) => ({
       loading: true,
     }));
 
-    const speech = get().speech;
-
     // Ask AI
     const res = await fetch(`/api/ai?question=${question}`);
     const data = await res.json();
 
     message.answer = data;
-    message.speech = speech;
 
     set(() => ({
       currentMessage: message,
@@ -55,9 +57,11 @@ export const useAIModel = create<AIModel>((set, get: any) => ({
 
     get().playMessage(message);
   },
+
   playMessage: async (message: any) => {
     set(() => ({
       currentMessage: message,
+      isPlaying: true, // Set isPlaying to true when audio starts
     }));
 
     if (!message.audioPlayer) {
@@ -74,11 +78,14 @@ export const useAIModel = create<AIModel>((set, get: any) => ({
 
       message.visemes = visemes;
       message.audioPlayer = audioPlayer;
+
       message.audioPlayer.onended = () => {
         set(() => ({
           currentMessage: null,
+          isPlaying: false, // Set isPlaying to false when audio ends
         }));
       };
+
       set(() => ({
         loading: false,
         messages: get().messages.map((m: any) => {
@@ -93,10 +100,12 @@ export const useAIModel = create<AIModel>((set, get: any) => ({
     message.audioPlayer.currentTime = 0;
     message.audioPlayer.play();
   },
+
   stopMessage: (message: any) => {
     message.audioPlayer.pause();
     set(() => ({
       currentMessage: null,
+      isPlaying: false, // Set isPlaying to false when audio is stopped
     }));
   },
 }));

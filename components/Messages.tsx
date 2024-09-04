@@ -10,7 +10,7 @@ import { Loader2, Send } from "lucide-react";
 const MessagesComponent = () => {
   const controls = useControls();
 
-  const { messages } = useAIModel();
+  const { messages, isPlaying } = useAIModel();
   const askAI = useAIModel((state) => state.askAI);
   const loading = useAIModel((state) => state.loading);
 
@@ -68,7 +68,7 @@ const MessagesComponent = () => {
         className="bg-blue-600 hover:bg-blue-700 absolute bottom-0 right-0 m-2 size-7"
         size="icon"
         onClick={ask}
-        disabled={loading}
+        disabled={loading || isPlaying}
       >
         {loading ? (
           <Loader2 className="w-4 h-4 animate-spin" />
