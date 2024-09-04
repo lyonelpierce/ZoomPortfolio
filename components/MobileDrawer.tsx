@@ -21,7 +21,7 @@ const MobileDrawer = ({
   if (!isMounted) return null;
 
   return (
-    <Drawer open={open} onOpenChange={onClose}>
+    <Drawer open={open} onOpenChange={onClose} modal={false}>
       <DrawerContent className="h-1/2 bg-[#242424] border-x-0 border-t border-slate-400/20 rounded-none">
         <DrawerHeader>
           <DrawerTitle className="text-start">
