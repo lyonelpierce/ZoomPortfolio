@@ -40,7 +40,7 @@ const PortfolioTabs = () => {
         {portfolioItems.map((item) => (
           <TabsTrigger
             value={item.value}
-            className="rounded-b-none w-48"
+            className="rounded-b-none w-24 md:w-48"
             key={item.name}
           >
             <p className="text-xs truncate flex items-center">

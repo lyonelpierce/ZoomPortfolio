@@ -61,10 +61,10 @@ const VideoCanvas = () => {
             layout="fill"
             objectFit="cover w-full h-full"
           />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[85%] bg-zinc-800 w-4/5 rounded-lg overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full md:h-[85%] bg-zinc-800 w-full md:w-4/5 rounded-lg overflow-hidden">
             <PortfolioTabs />
           </div>
-          <div className="absolute bottom-0 h-12 w-full bg-zinc-800/40 backdrop-blur-md border-t border-slate-400/20 flex items-center justify-center">
+          <div className="hidden absolute bottom-0 h-12 w-full bg-zinc-800/40 backdrop-blur-md border-t border-slate-400/20 md:flex items-center justify-center">
             <ul>
               <li className="bg-zinc-400/20 p-2 rounded-lg cursor-pointer">
                 <Chrome />
