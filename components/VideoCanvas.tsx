@@ -30,9 +30,11 @@ const Loader = () => {
     <Html center>
       <div className="bg-[#242424] h-screen w-screen flex flex-col justify-around items-center gap-12 font-semibold">
         <div />
-        <div className="flex flex-col gap-2 justify-center items-center">
-          <p>Please wait the, the meeting host will let you in soon.</p>
-          <p>Lyonel Pierce Meeting</p>
+        <div className="flex flex-col gap-2 justify-center items-center w-full">
+          <p className="text-center">
+            Please wait the, the meeting host will let you in soon.
+          </p>
+          <p className="text-center">Lyonel Pierce Meeting</p>
         </div>
         {Math.floor(progress)}% loaded
       </div>
