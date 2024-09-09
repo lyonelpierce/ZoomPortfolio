@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
-import { CameraControls, Environment } from "@react-three/drei";
+import {
+  CameraControls,
+  Environment,
+  useProgress,
+  Html,
+} from "@react-three/drei";
 import {
   EffectComposer,
   DepthOfField,
@@ -16,6 +21,24 @@ import { Chrome } from "lucide-react";
 
 import Lyonel from "@/components/Lyonel";
 import PortfolioTabs from "@/components/PortfolioTabs";
+import { Suspense } from "react";
+
+const Loader = () => {
+  const { progress } = useProgress();
+
+  return (
+    <Html center>
+      <div className="bg-[#242424] h-screen w-screen flex flex-col justify-around items-center gap-12 font-semibold">
+        <div />
+        <div className="flex flex-col gap-2 justify-center items-center">
+          <p>Please wait the, the meeting host will let you in soon.</p>
+          <p>Lyonel Pierce Meeting</p>
+        </div>
+        {Math.floor(progress)}% loaded
+      </div>
+    </Html>
+  );
+};
 
 const VideoCanvas = () => {
   const controls = useControls();
@@ -39,7 +62,9 @@ const VideoCanvas = () => {
           }}
           className={cn("w-full", controls.isPortfolioOpen && "max-w-80")}
         >
-          <Lyonel />
+          <Suspense fallback={<Loader />}>
+            <Lyonel />
+          </Suspense>
           <EffectComposer multisampling={10} enableNormalPass={true}>
             <DepthOfField
               focusDistance={0}
