@@ -237,7 +237,7 @@ const OptionsMenu = () => {
             </li>
             <li className="cursor-pointer transition-all ease-in-out hover:bg-[#434343] rounded-lg w-20 p-2 group/icon">
               <Link
-                href="https://j921775fjqkcrdxz.public.blob.vercel-storage.com/Resume-dNdwviCQvCdbdBo0R17v3dprcrYRrj.pdf"
+                href="https://j921775fjqkcrdxz.public.blob.vercel-storage.com/Lyonel%20Pierce%20Resume-3h6RkfNeuMJXQqmU60jISYRRe5UrLX.pdf"
                 target="_blank"
                 className="flex flex-col gap-1 items-center justify-center"
               >
